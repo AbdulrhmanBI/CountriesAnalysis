@@ -1,0 +1,87 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 1.2570207430874407
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 441.94403526671465,
+            "y": 554.81626719945507
+          },
+          "nodeIndex": "CountryData Unpivot",
+          "nodeLineageTag": "aecf0988-b76c-4889-9eb6-6a069d67980d",
+          "size": {
+            "height": 259.63225895749781,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 443.62753641992435,
+            "y": 0
+          },
+          "nodeIndex": "Economy",
+          "nodeLineageTag": "4637041d-7114-49ba-8870-57e3a1178c14",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 26.8762219845718,
+            "y": 0
+          },
+          "nodeIndex": "Energy",
+          "nodeLineageTag": "8ac52021-22e7-4fec-93e6-9d12350be909",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 763.13177663266958,
+            "y": 37.097121919688078
+          },
+          "nodeIndex": "Population",
+          "nodeLineageTag": "ab6c2590-3f82-4e05-90d6-d232e629a646",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1054.5588481318325,
+            "y": 0
+          },
+          "nodeIndex": "Measure",
+          "nodeLineageTag": "54951918-c780-4c73-bb63-96c13c4be5de",
+          "size": {
+            "height": 1000,
+            "width": 234
+          },
+          "zIndex": 5
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 79.553182037699926,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

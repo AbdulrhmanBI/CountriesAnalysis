@@ -1,0 +1,224 @@
+table Measure
+	lineageTag: 54951918-c780-4c73-bb63-96c13c4be5de
+
+	measure 'total population' = SUM(Population[Population])
+		formatString: #,0
+		displayFolder: KPIs
+		lineageTag: 702b9d1f-e9d8-4c51-9ebe-9408fdcd14ef
+
+	measure 'total GDP' = SUM(Economy[GDP])
+		formatString: \$#,0
+		displayFolder: KPIs
+		lineageTag: 99c99810-3b78-4045-8ff5-da13a76de9d5
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'avg life expectancy' = AVERAGE(Population[Life Expectancy])
+		formatString: 0.0
+		displayFolder: KPIs
+		lineageTag: 022c0b9d-a338-4602-95ba-490174bfbaae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'GDP per capita' = AVERAGE(Economy[GDP per Capita])
+		formatString: \$#,0
+		displayFolder: KPIs
+		lineageTag: c088ea1b-bc73-4951-80db-df30aee8d7e9
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'internet users' = SUM(Energy[Internet users])
+		formatString: #,0
+		displayFolder: KPIs
+		lineageTag: 521330a0-9877-4a58-b9dc-18ee6fce7dd7
+
+	measure 'internet users %' = DIVIDE([Internet Users], [Total Population])
+		formatString: 0.0%
+		displayFolder: KPIs
+		lineageTag: 54f24082-eeae-44f6-9656-b9e301292e3b
+
+	measure 'electricity consumption' = SUM(Energy[Electricity - consumption(kWh)])
+		formatString: #,0
+		displayFolder: KPIs
+		lineageTag: 9dfe1001-55fe-4dfc-bf6d-d44a1ea1206b
+
+	measure 'electricity per capita' = DIVIDE([electricity consumption], [Total Population])
+		formatString: #,0
+		displayFolder: KPIs
+		lineageTag: 436d95c9-da36-4231-8b03-b1cf9a2d850a
+
+	measure 'countries count' = DISTINCTCOUNT('CountryData Unpivot'[Country])
+		formatString: 0
+		displayFolder: KPIs
+		lineageTag: b36c5bd8-3ccd-473b-8592-6a09a0f1b2c3
+
+	measure 'selected country' = SELECTEDVALUE('CountryData Unpivot'[Country], "All Countries")
+		displayFolder: Overview
+		lineageTag: 6d7a1711-e20b-451c-b41d-8a10632dc5b1
+
+	measure 'GDP share of world' = DIVIDE([total GDP], CALCULATE([total GDP], ALL('CountryData Unpivot')))
+		formatString: 0.0%
+		displayFolder: Overview
+		lineageTag: 5b97fa1c-f5dc-463d-9f1b-98a81b270a62
+
+	measure 'population share of world' = DIVIDE([total population], CALCULATE([total population], ALL('CountryData Unpivot')))
+		formatString: 0.0%
+		displayFolder: Overview
+		lineageTag: f4b5744a-89ef-4513-ada3-febda99538ad
+
+	measure 'Density per sq km' = DIVIDE(SUM(Population[Population]), SUM(Population[Area sq km]))
+		formatString: #,0.0
+		displayFolder: Population
+		lineageTag: e54b4ee7-2922-406b-841d-7ee0dc75b119
+
+	measure 'Avg Birth Rate' = AVERAGE(Population[Birth rate(births/1000 population)])
+		formatString: 0.0
+		displayFolder: Population
+		lineageTag: 11d75cd3-27f7-4a57-a688-8938114bd746
+
+	measure 'Avg Death Rate' = AVERAGE(Population[Death rate(deaths/1000 population)])
+		formatString: 0.0
+		displayFolder: Population
+		lineageTag: 2f108d87-e909-4b20-863a-f7924a778588
+
+	measure 'Avg Infant Mortality' = AVERAGE(Population[Infant mortality rate(deaths/1000 live births)])
+		formatString: 0.0
+		displayFolder: Population
+		lineageTag: 77a237ec-ef6f-48df-a987-f3b07673e7d1
+
+	measure 'Avg Fertility Rate' = AVERAGE(Population[Total fertility rate(children born/woman)])
+		formatString: 0.00
+		displayFolder: Population
+		lineageTag: 49ccdfb1-0b8e-4c63-b67a-74a366d13526
+
+	measure 'avg growth %' = AVERAGE(Economy[GDP Growth %])
+		formatString: 0.0\%
+		displayFolder: Economy
+		lineageTag: 64fff2d1-4ab6-45a6-9d71-6ee54d8761b6
+
+	measure 'avg inflation %' = AVERAGE(Economy[Inflation %])
+		formatString: 0.0\%
+		displayFolder: Economy
+		lineageTag: afc14b63-6928-4333-b085-0b10f0c00bc3
+
+	measure 'avg unemployment %' = AVERAGE(Economy[Unemployment %])
+		formatString: 0.0\%
+		displayFolder: Economy
+		lineageTag: 2fe95540-7f1b-4d06-80e6-8909f9245c9d
+
+	measure 'total exports' = SUM(Economy[Exports])
+		formatString: \$#,0
+		displayFolder: Economy
+		lineageTag: bac579fc-48f7-41f4-accf-e948095523fc
+
+	measure 'total imports' = SUM(Economy[Imports])
+		formatString: \$#,0
+		displayFolder: Economy
+		lineageTag: 165a9ae3-8880-432f-8cc9-e290e4c78341
+
+	measure 'total trade balance' = SUM(Economy[Trade Balance])
+		formatString: \$#,0
+		displayFolder: Economy
+		lineageTag: a45bf045-da7a-497a-9c5b-f1d4fb1d4c70
+
+	measure 'trade surplus' = MAX([total trade balance], 0)
+		formatString: \$#,0
+		displayFolder: Economy
+		lineageTag: e87f92b6-55ea-4ec2-a4fa-991bf03790b2
+
+	measure 'trade deficit' = MIN([total trade balance], 0)
+		formatString: \$#,0
+		displayFolder: Economy
+		lineageTag: a4662456-bcc8-41fc-ac87-fe2de758e156
+
+	measure 'electricity production' = SUM(Energy[Electricity - production(kWh)])
+		formatString: #,0
+		displayFolder: Energy
+		lineageTag: 673619b0-1d27-45a5-a4e3-928a753a6b5d
+
+	measure 'oil production' = SUM(Energy[Oil - production(bbl/day)])
+		formatString: #,0
+		displayFolder: Energy
+		lineageTag: 50614e12-dbe7-4487-bf10-90a3566ebb44
+
+	measure 'oil consumption' = SUM(Energy[Oil - consumption(bbl/day)])
+		formatString: #,0
+		displayFolder: Energy
+		lineageTag: 5ff9975c-688e-4868-87be-e61818651e4f
+
+	measure 'natural gas production' = SUM(Energy[Natural gas - production(cu m)])
+		formatString: #,0
+		displayFolder: Energy
+		lineageTag: 3aaf9d53-65eb-4724-92b4-d0a0b203363f
+
+	measure 'oil reserves' = SUM(Energy[Oil - proved reserves(bbl)])
+		formatString: #,0
+		displayFolder: Energy
+		lineageTag: ee8f50de-c88f-42c4-8d51-1be0e0e2a7f4
+
+	measure Video =
+			
+			"<style>
+			  html,body{margin:0;height:100%;overflow:hidden;background:transparent}
+			  video{width:100%;height:100%;object-fit:cover;display:block}
+			  .btn{
+			    position:absolute; bottom:12%; width:18%; height:7%;
+			    display:flex; align-items:center; justify-content:center;
+			    font-family:Segoe UI,Arial,sans-serif; font-size:1.4vw; letter-spacing:.12em;
+			    text-transform:uppercase; color:#e6f1ff;
+			    background:rgba(10,40,90,.55); border:1px solid #4aa8ff; border-radius:4px;
+			    opacity:0; animation:show 1s ease 10.5s forwards;
+			  }
+			  @keyframes show{to{opacity:1}}
+			</style>
+			<video autoplay muted playsinline src='https://raw.githubusercontent.com/AbdulrhmanBI/CountriesAnalysis/main/Video/CountryData.mp4'></video>
+			</video>
+			<div class='btn' style='left:11%'>Overview</div>
+			<div class='btn' style='left:31%'>Population</div>
+			<div class='btn' style='left:51%'>Economy</div>
+			<div class='btn' style='left:71%'>Energy</div>"
+		lineageTag: 05307b17-dbe1-49f2-bd09-994e0fcd534f
+
+	measure 'total population-G' = CALCULATE(SUM(Population[Population]), ALL())
+		formatString: 0
+		displayFolder: Global KPIs
+		lineageTag: 26eb6a46-a722-4e6f-94b4-afff5c52b82f
+
+	measure 'total GDP-G' = CALCULATE(SUM(Economy[GDP]), ALL())
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		displayFolder: Global KPIs
+		lineageTag: 4cf62e11-60d5-41de-a9e4-2591954723b4
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'avg life expectancy-G' = CALCULATE(AVERAGE(Population[Life Expectancy]), ALL())
+		displayFolder: Global KPIs
+		lineageTag: 0b299f2c-e7da-4580-aa94-90b0c86ea5fe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'internet users %-G' = CALCULATE(DIVIDE([Internet Users], [Total Population]), ALL()) * 100
+		displayFolder: Global KPIs
+		lineageTag: 8f46cad8-d4a4-4219-9f39-b9838e7a808c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'countries count-G' = CALCULATE(DISTINCTCOUNT('CountryData Unpivot'[Country]), ALL())
+		formatString: 0
+		displayFolder: Global KPIs
+		lineageTag: afc86b72-6319-49d2-9bba-f2531c0b5626
+
+	partition Measure = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlSKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", Int64.Type}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

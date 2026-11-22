@@ -1,0 +1,131 @@
+table Population
+	lineageTag: ab6c2590-3f82-4e05-90d6-d232e629a646
+
+	column Country
+		dataType: string
+		isHidden
+		lineageTag: 58560b1b-d2ec-48a5-93cc-9b643bd1cc8a
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Area sq km'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1b62c1a9-cfc1-444d-875e-930b5d037ba6
+		summarizeBy: none
+		sourceColumn: Area sq km
+
+		annotation SummarizationSetBy = Automatic
+
+	column Population
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ea40b4a-b805-4df9-aa12-b57cae179591
+		summarizeBy: none
+		sourceColumn: Population
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Birth rate(births/1000 population)'
+		dataType: double
+		lineageTag: f003fd35-1334-436b-b152-065f89beabe6
+		summarizeBy: none
+		sourceColumn: Birth rate(births/1000 population)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Death rate(deaths/1000 population)'
+		dataType: double
+		lineageTag: 8a2adf8d-4c1e-49c6-97f2-3663abb3b13e
+		summarizeBy: none
+		sourceColumn: Death rate(deaths/1000 population)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'HIV/AIDS - adult prevalence rate(%)'
+		dataType: double
+		lineageTag: db9a73ad-86b2-452c-af3a-d3b994e972ad
+		summarizeBy: none
+		sourceColumn: HIV/AIDS - adult prevalence rate(%)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'HIV/AIDS - deaths'
+		dataType: int64
+		formatString: 0
+		lineageTag: f5ff0ff2-0bdc-4f0a-bf9d-ed5d15684bdd
+		summarizeBy: none
+		sourceColumn: HIV/AIDS - deaths
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'HIV/AIDS - people living with HIV/AIDS'
+		dataType: int64
+		formatString: 0
+		lineageTag: 09cdc9ca-3a76-4e7c-8c29-c2dea09f123c
+		summarizeBy: none
+		sourceColumn: HIV/AIDS - people living with HIV/AIDS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Infant mortality rate(deaths/1000 live births)'
+		dataType: double
+		lineageTag: 3fc16fb5-b41b-4a6c-a9fc-60f83816cba7
+		summarizeBy: none
+		sourceColumn: Infant mortality rate(deaths/1000 live births)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Life Expectancy'
+		dataType: double
+		lineageTag: a53b26e6-d755-4ae8-96d0-f069b307fb9a
+		summarizeBy: none
+		sourceColumn: Life Expectancy
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total fertility rate(children born/woman)'
+		dataType: double
+		lineageTag: 128051b1-6cd1-46ee-8f50-9c478a7dd36d
+		summarizeBy: none
+		sourceColumn: Total fertility rate(children born/woman)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Population Density'
+		dataType: double
+		lineageTag: 9de7e556-cb90-4588-909f-a28eaeab76ac
+		summarizeBy: none
+		sourceColumn: Population Density
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Population = m
+		mode: import
+		source =
+				let
+				    Source = Country_Data,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Country", "Area sq km", "Population", "Birth rate(births/1000 population)", "Death rate(deaths/1000 population)", "HIV/AIDS - adult prevalence rate(%)", "HIV/AIDS - deaths", "HIV/AIDS - people living with HIV/AIDS", "Infant mortality rate(deaths/1000 live births)", "Life Expectancy", "Total fertility rate(children born/woman)", "Population Density"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

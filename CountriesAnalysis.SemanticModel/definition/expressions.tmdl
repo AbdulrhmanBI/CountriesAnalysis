@@ -1,0 +1,35 @@
+expression DataFolder = "C:\path\to\CountriesAnalysis\data" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 5732c92c-4f52-4dd3-a448-bf35c7bf1568
+
+	annotation PBI_ResultType = Text
+
+expression Country_Data =
+		let
+		    Source = Csv.Document(File.Contents(Text.TrimEnd(DataFolder, "\") & "\Country Data Comparison.csv"),[Delimiter=";", Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Filtered Rows" = Table.SelectRows(#"Promoted Headers", each not Text.StartsWith([Country], "String")),
+		    #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each not Text.StartsWith([Country], "#")),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Filtered Rows1",{{"Area(sq km)", Int64.Type}, {"Birth rate(births/1000 population)", type number}, {"Current account balance", Currency.Type}, {"Death rate(deaths/1000 population)", type number}, {"Debt - external", Currency.Type}, {"Electricity - consumption(kWh)", Int64.Type}, {"Electricity - production(kWh)", Int64.Type}, {"Exports", Currency.Type}, {"GDP", Currency.Type}, {"GDP - per capita", Currency.Type}, {"GDP - real growth rate(%)", type number}, {"HIV/AIDS - adult prevalence rate(%)", type number}, {"HIV/AIDS - deaths", Int64.Type}, {"HIV/AIDS - people living with HIV/AIDS", Int64.Type}, {"Highways(km)", Int64.Type}, {"Imports", Currency.Type}, {"Industrial production growth rate(%)", type number}, {"Infant mortality rate(deaths/1000 live births)", type number}, {"Inflation rate (consumer prices)(%)", type number}, {"Internet hosts", Int64.Type}, {"Internet users", Int64.Type}, {"Investment (gross fixed)(% of GDP)", type number}, {"Labor force", Int64.Type}, {"Life expectancy at birth(years)", type number}, {"Military expenditures - dollar figure", Int64.Type}, {"Military expenditures - percent of GDP(%)", type number}, {"Natural gas - consumption(cu m)", Int64.Type}, {"Natural gas - exports(cu m)", Int64.Type}, {"Natural gas - imports(cu m)", Int64.Type}, {"Natural gas - production(cu m)", Int64.Type}, {"Natural gas - proved reserves(cu m)", Int64.Type}, {"Oil - consumption(bbl/day)", Int64.Type}, {"Oil - exports(bbl/day)", Int64.Type}, {"Oil - imports(bbl/day)", Int64.Type}, {"Oil - production(bbl/day)", Int64.Type}, {"Oil - proved reserves(bbl)", Int64.Type}, {"Population", Int64.Type}, {"Public debt(% of GDP)", type number}, {"Railways(km)", Int64.Type}, {"Reserves of foreign exchange & gold", Currency.Type}, {"Telephones - main lines in use", Int64.Type}, {"Telephones - mobile cellular", Int64.Type}, {"Total fertility rate(children born/woman)", type number}, {"Unemployment rate(%)", type number}}, "en-US"),
+		    #"Inserted Subtraction" = Table.AddColumn(#"Changed Type", "Trade Balance", each [Exports] - [Imports], type number),
+		    #"Inserted Division" = Table.AddColumn(#"Inserted Subtraction", "Population Density", each if [#"Area(sq km)"] = 0 then null else [Population] / [#"Area(sq km)"], type number),
+		    #"Renamed Columns" = Table.RenameColumns(#"Inserted Division",{{"Area(sq km)", "Area sq km"}, {"GDP - per capita", "GDP per Capita"}, {"GDP - real growth rate(%)", "GDP Growth %"}, {"Inflation rate (consumer prices)(%)", "Inflation %"}, {"Unemployment rate(%)", "Unemployment %"}, {"Life expectancy at birth(years)", "Life Expectancy"}, {"Public debt(% of GDP)", "Public Debt % GDP"}})
+		in
+		    #"Renamed Columns"
+	lineageTag: c9f0d4bb-ce47-48af-9b44-0bfbc5260683
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+expression Country_Continent =
+		let
+		    Source = Csv.Document(File.Contents(Text.TrimEnd(DataFolder, "\") & "\Country_Continent.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+		in
+		    #"Promoted Headers"
+	lineageTag: 453186ba-2ffa-4202-99c6-41c1f899014c
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

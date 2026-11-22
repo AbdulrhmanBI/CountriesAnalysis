@@ -1,0 +1,187 @@
+table Energy
+	lineageTag: 8ac52021-22e7-4fec-93e6-9d12350be909
+
+	column Country
+		dataType: string
+		isHidden
+		lineageTag: b6828e4c-d3d5-43c3-83f9-aad330b1f9d0
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Electricity - consumption(kWh)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 789a6d0f-d3ed-4481-aa66-b46ed2d1c6ff
+		summarizeBy: none
+		sourceColumn: Electricity - consumption(kWh)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Electricity - production(kWh)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9da2c66d-c62b-4352-9f64-7c5ee3587fc9
+		summarizeBy: none
+		sourceColumn: Electricity - production(kWh)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Highways(km)
+		dataType: int64
+		formatString: 0
+		lineageTag: 68ab7d09-56d4-42e1-8f7c-34f79ac1f7ee
+		summarizeBy: none
+		sourceColumn: Highways(km)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Internet hosts'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0ebab292-44b1-4c32-8600-af533accccc0
+		summarizeBy: none
+		sourceColumn: Internet hosts
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Internet users'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ff1cf7e-91e9-403b-816d-f81fa8208080
+		summarizeBy: none
+		sourceColumn: Internet users
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Natural gas - consumption(cu m)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 84f5cc63-38e6-4b08-8ef8-ccd4298101d5
+		summarizeBy: none
+		sourceColumn: Natural gas - consumption(cu m)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Natural gas - exports(cu m)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 85d1dfc5-34ed-4645-8513-c7bed003d315
+		summarizeBy: none
+		sourceColumn: Natural gas - exports(cu m)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Natural gas - imports(cu m)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7b28e7ba-de41-4192-88cd-8a50383d57a2
+		summarizeBy: none
+		sourceColumn: Natural gas - imports(cu m)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Natural gas - production(cu m)'
+		dataType: int64
+		formatString: 0
+		lineageTag: c68ace98-41c5-4887-9de6-8f0da9481fcb
+		summarizeBy: none
+		sourceColumn: Natural gas - production(cu m)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Natural gas - proved reserves(cu m)'
+		dataType: int64
+		formatString: 0
+		lineageTag: f842babf-b567-4065-bf16-9f8d35532ca9
+		summarizeBy: none
+		sourceColumn: Natural gas - proved reserves(cu m)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Oil - consumption(bbl/day)'
+		dataType: int64
+		formatString: 0
+		lineageTag: c6cc22d2-8083-43e9-9ada-0157346b3234
+		summarizeBy: none
+		sourceColumn: Oil - consumption(bbl/day)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Oil - exports(bbl/day)'
+		dataType: int64
+		formatString: 0
+		lineageTag: eba03805-e162-4d11-98ba-0afb0bbe0456
+		summarizeBy: none
+		sourceColumn: Oil - exports(bbl/day)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Oil - imports(bbl/day)'
+		dataType: int64
+		formatString: 0
+		lineageTag: ff964125-5e09-4932-98d0-f8584ed977f7
+		summarizeBy: none
+		sourceColumn: Oil - imports(bbl/day)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Oil - production(bbl/day)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 85d9af8c-6ebb-49d1-b866-79e0af16dd63
+		summarizeBy: none
+		sourceColumn: Oil - production(bbl/day)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Oil - proved reserves(bbl)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 82bcf1fc-813d-4f47-a4f3-42468429d138
+		summarizeBy: none
+		sourceColumn: Oil - proved reserves(bbl)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Railways(km)
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d0f0f82-a13a-4b6a-a65b-b191980bad2d
+		summarizeBy: none
+		sourceColumn: Railways(km)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Telephones - main lines in use'
+		dataType: int64
+		formatString: 0
+		lineageTag: 76244cb4-6d8f-4402-a2d9-ba73465de405
+		summarizeBy: none
+		sourceColumn: Telephones - main lines in use
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Telephones - mobile cellular'
+		dataType: int64
+		formatString: 0
+		lineageTag: 33a77deb-8dba-48b2-ba29-a7095e4be1c7
+		summarizeBy: none
+		sourceColumn: Telephones - mobile cellular
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Energy = m
+		mode: import
+		source =
+				let
+				    Source = Country_Data,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Country", "Electricity - consumption(kWh)", "Electricity - production(kWh)", "Highways(km)", "Internet hosts", "Internet users", "Natural gas - consumption(cu m)", "Natural gas - exports(cu m)", "Natural gas - imports(cu m)", "Natural gas - production(cu m)", "Natural gas - proved reserves(cu m)", "Oil - consumption(bbl/day)", "Oil - exports(bbl/day)", "Oil - imports(bbl/day)", "Oil - production(bbl/day)", "Oil - proved reserves(bbl)", "Railways(km)", "Telephones - main lines in use", "Telephones - mobile cellular"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

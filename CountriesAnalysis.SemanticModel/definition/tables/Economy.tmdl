@@ -1,0 +1,200 @@
+table Economy
+	lineageTag: 4637041d-7114-49ba-8870-57e3a1178c14
+
+	column Country
+		dataType: string
+		isHidden
+		lineageTag: 5badb790-aae6-495c-a96f-63d8ad062486
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current account balance'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 31dcc00d-2e56-4716-b307-db9893ceb54c
+		summarizeBy: none
+		sourceColumn: Current account balance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Debt - external'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 34409f6e-bf9d-41a4-a563-d394dbc5e3b7
+		summarizeBy: none
+		sourceColumn: Debt - external
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Exports
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 8b3f12c4-4629-46b9-b445-83b395f7b98e
+		summarizeBy: none
+		sourceColumn: Exports
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column GDP
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 511e89ee-b75e-4641-814e-b26c08a7a973
+		summarizeBy: none
+		sourceColumn: GDP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'GDP per Capita'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 854a0e4e-4ee7-4598-b253-4cdcc0aac84e
+		summarizeBy: none
+		sourceColumn: GDP per Capita
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'GDP Growth %'
+		dataType: double
+		lineageTag: d33f671d-74a9-4416-a219-ea9d505f4fd9
+		summarizeBy: none
+		sourceColumn: GDP Growth %
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Imports
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: b047e1f6-918b-4b3a-a607-55e187d38a93
+		summarizeBy: none
+		sourceColumn: Imports
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Industrial production growth rate(%)'
+		dataType: double
+		lineageTag: 8196694a-eed4-46ce-b10d-c4c2c9a6768d
+		summarizeBy: none
+		sourceColumn: Industrial production growth rate(%)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Inflation %'
+		dataType: double
+		lineageTag: 826b51f2-a0d0-4be6-a9ae-a43036323856
+		summarizeBy: none
+		sourceColumn: Inflation %
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Investment (gross fixed)(% of GDP)'
+		dataType: double
+		lineageTag: c1169706-a0f9-4af3-b11c-4e849b4305c3
+		summarizeBy: none
+		sourceColumn: Investment (gross fixed)(% of GDP)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Labor force'
+		dataType: int64
+		formatString: 0
+		lineageTag: fb6bd89b-dd25-432d-a550-21e4e8b4131e
+		summarizeBy: none
+		sourceColumn: Labor force
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Military expenditures - dollar figure'
+		dataType: int64
+		formatString: 0
+		lineageTag: e577b6d1-c1b8-4f09-9387-435a33af117b
+		summarizeBy: none
+		sourceColumn: Military expenditures - dollar figure
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Military expenditures - percent of GDP(%)'
+		dataType: double
+		lineageTag: 72a3db36-1597-4719-a938-8a249cd2f772
+		summarizeBy: none
+		sourceColumn: Military expenditures - percent of GDP(%)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Public Debt % GDP'
+		dataType: double
+		lineageTag: e0ff36dc-5cba-4c27-81d5-bfd7a2da3ba0
+		summarizeBy: none
+		sourceColumn: Public Debt % GDP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Reserves of foreign exchange & gold'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 25666987-d38a-419b-9716-36c08ac46e48
+		summarizeBy: none
+		sourceColumn: Reserves of foreign exchange & gold
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Unemployment %'
+		dataType: double
+		lineageTag: 8c19f91d-d1b8-49f5-bfae-0b9979ca0f13
+		summarizeBy: none
+		sourceColumn: Unemployment %
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Trade Balance'
+		dataType: double
+		lineageTag: f2a81d21-3d98-4d74-ad01-1afd50b01dc3
+		summarizeBy: none
+		sourceColumn: Trade Balance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Economy = m
+		mode: import
+		source =
+				let
+				    Source = Country_Data,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Country", "Current account balance", "Debt - external", "Exports", "GDP", "GDP per Capita", "GDP Growth %", "Imports", "Industrial production growth rate(%)", "Inflation %", "Investment (gross fixed)(% of GDP)", "Labor force", "Military expenditures - dollar figure", "Military expenditures - percent of GDP(%)", "Public Debt % GDP", "Reserves of foreign exchange & gold", "Unemployment %", "Trade Balance"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

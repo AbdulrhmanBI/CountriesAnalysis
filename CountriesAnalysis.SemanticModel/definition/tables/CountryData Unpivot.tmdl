@@ -1,0 +1,82 @@
+table 'CountryData Unpivot'
+	lineageTag: aecf0988-b76c-4889-9eb6-6a069d67980d
+
+	column Country
+		dataType: string
+		lineageTag: 788adcf1-8799-4801-8b54-b831fd459a3e
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: Country
+
+		changedProperty = IsHidden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Indicator
+		dataType: string
+		lineageTag: 24f6cd05-fb53-45e9-8c32-3cce4f8da1f7
+		summarizeBy: none
+		sourceColumn: Indicator
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: double
+		lineageTag: b0a6a65a-5390-4ff8-83d1-3f104ed11692
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Continent
+		dataType: string
+		lineageTag: feed30e5-f4fe-4a85-82c6-fd801deb98f9
+		dataCategory: Continent
+		summarizeBy: none
+		sourceColumn: Continent
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Income Group' =
+			
+			SWITCH(
+			    TRUE(),
+			    ISBLANK(RELATED(Economy[GDP per Capita])),
+			    "Unclassified",
+			    RELATED(Economy[GDP per Capita]) < 1136,
+			    "Low income",
+			    RELATED(Economy[GDP per Capita]) < 4466,
+			    "Lower-middle income",
+			    RELATED(Economy[GDP per Capita]) < 13846,
+			    "Upper-middle income",
+			    "High income"
+			)
+		lineageTag: a8a52c35-2489-4ed0-9db8-802230a8002d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'CountryData Unpivot' = m
+		mode: import
+		source =
+				let
+				    Source = Country_Data,
+				    #"Unpivoted Other Columns" = Table.UnpivotOtherColumns(Source, {"Country"}, "Attribute", "Value"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Unpivoted Other Columns",{{"Attribute", "Indicator"}}),
+				    #"Filtered Rows3" = Table.SelectRows(#"Renamed Columns", each [Value] <> null),
+				    #"Merged Queries" = Table.NestedJoin(#"Filtered Rows3", {"Country"}, Country_Continent, {"Country"}, "Country_Continent", JoinKind.LeftOuter),
+				    #"Expanded Country_Continent" = Table.ExpandTableColumn(#"Merged Queries", "Country_Continent", {"Continent"}, {"Continent"}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Expanded Country_Continent",{"Country", "Continent", "Indicator", "Value"})
+				in
+				    #"Reordered Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

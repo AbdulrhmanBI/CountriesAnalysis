@@ -1,0 +1,15 @@
+relationship 4340b247-e235-07dd-edff-962c238f8b81
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'CountryData Unpivot'.Country
+	toColumn: Population.Country
+
+relationship 384bdc9d-9bd6-7919-0a88-42d51723fa5a
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'CountryData Unpivot'.Country
+	toColumn: Economy.Country
+
+relationship e406480f-eaf2-ee5d-566e-ac9159505fa9
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'CountryData Unpivot'.Country
+	toColumn: Energy.Country
+

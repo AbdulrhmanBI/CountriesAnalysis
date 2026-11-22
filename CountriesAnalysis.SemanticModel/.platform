@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CountriesAnalysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1120d156-4473-4cf0-b113-773779a43533"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "CountryInsightsDark",
+  "dataColors": [
+    "#0096FF",
+    "#8FD0FF",
+    "#0A67B5",
+    "#5AA9E6",
+    "#1C4E80",
+    "#B7DEFA",
+    "#3A7CA5",
+    "#7F8FA6"
+  ],
+  "background": "#0B1118",
+  "backgroundLight": "#0F1B28",
+  "backgroundNeutral": "#16222F",
+  "foreground": "#FFFFFF",
+  "foregroundNeutralSecondary": "#A9B9CC",
+  "foregroundNeutralTertiary": "#6F8299",
+  "tableAccent": "#0096FF",
+  "good": "#2ECC9A",
+  "neutral": "#F2C94C",
+  "bad": "#FF6B6B",
+  "maximum": "#0096FF",
+  "center": "#3A7CA5",
+  "minimum": "#0C2238",
+  "null": "#3A4A5C",
+  "hyperlink": "#8FD0FF",
+  "visitedHyperlink": "#A9B9CC",
+  "textClasses": {
+    "callout": {
+      "fontSize": 30,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#FFFFFF"
+    },
+    "title": {
+      "fontSize": 16,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#FFFFFF"
+    },
+    "header": {
+      "fontSize": 13,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#A9B9CC"
+    },
+    "label": {
+      "fontSize": 11,
+      "fontFace": "Segoe UI",
+      "color": "#A9B9CC"
+    }
+  }
+}
